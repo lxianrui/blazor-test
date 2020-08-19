@@ -1,0 +1,44 @@
+﻿@inherits LayoutComponentBase
+<Layout Style="min-height: 100vh; ">
+    <Sider>
+        <div class="logo"></div>
+        <Menu Theme="MenuTheme.Dark" DefaultSelectedKeys=@(new[]{"1"}) Mode="MenuMode.Inline">
+            <MenuItem Key="1" RouterLink="/fetchdata">
+                <Icon Type="pie-chart" Theme="outline" />
+                <span>Option 1</span>
+            </MenuItem>
+            <MenuItem Key="2" RouterLink="/counter">
+                <Icon Type="pie-chart" Theme="outline" />
+                <span>Option 1</span>
+            </MenuItem>
+            <MenuItem Key="3" RouterLink="/users">
+                <Icon Type="pie-chart" Theme="outline" />
+                <span>users 1</span>
+            </MenuItem>
+            <MenuItem Key="4" RouterLink="/login">
+                <Icon Type="pie-chart" Theme="outline" />
+                <span>Option 1</span>
+            </MenuItem>
+        </Menu>
+    </Sider>
+    <Layout Class="site-layout">
+        <Header Class="site-layout-background" Style=" padding: 0 ;"></Header>
+        <Content Style="margin:16px;">
+            <div class="site-layout-background" style="padding: 24px; min-height: 360px">
+                @Body
+            </div>
+        </Content>
+    </Layout>
+</Layout>
+<style>
+    #components-layout-demo-side .logo {
+        height: 32px;
+        background: #ffffff;
+        background: rgba(255, 255, 255, 0.2);
+        margin: 16px;
+    }
+
+    .site-layout .site-layout-background {
+        background: #fff;
+    }
+</style>

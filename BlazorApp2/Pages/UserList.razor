@@ -1,0 +1,38 @@
+﻿@page "/users"
+@using BlazorApp2.Data
+
+<Table DataSource="@data2"
+       @bind-Total="_total"
+       @bind-PageIndex="_index"
+       @bind-PageSize="_size">
+    <Selection Width="50" Key="@context.Name" Type="checkbox" />
+    <Column Width="230" Title="编号" Field="context.Id">@context.Id</Column>
+    <Column Title="姓名" Field="context.Name">@context.Name</Column>
+    <Column Title="创建时间" Field="context.Created">@context.Created</Column>
+</Table>
+<div>
+    index:@_index,size:@_size
+</div>
+@inject UserInfoService _userInfoService
+@code {
+
+    int _index = 1;
+    int _size = 5;
+
+    int _total = 50_000;
+
+    UserInfo[] data2;
+
+    /// <summary>
+    /// Method invoked when the component has received parameters from its parent in
+    /// the render tree, and the incoming values have been assigned to properties.
+    /// </summary>
+    /// <returns>A <see cref="T:System.Threading.Tasks.Task" /> representing any asynchronous operation.</returns>
+    protected async override Task OnParametersSetAsync()
+    {
+        data2 = await _userInfoService.GetUserList(_index, _size);
+    }
+
+
+
+}
